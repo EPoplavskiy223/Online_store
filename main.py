@@ -1,21 +1,10 @@
 from src.my_class import Category, Product
-from src.utils import read_json
-
-
-def distribution(data: list) -> list:
-    """Распаковывает лист и передает словари в Классы"""
-    result = []
-
-    for category in data:
-        result.append(Category(**category))
-        for product in category["products"]:
-            result.append(Product(**product))
-    return result
+from src.utils import read_json, distribution
 
 
 if __name__ == "__main__":
 
-    file = r"C:\PythonProgramm\PROJECT\Online_store\products.json"
+    file = r"C:\PythonProgramm\PROJECT\Online_store\data\products.json"
     read_file = read_json(file)
     func = distribution(read_file)
 
