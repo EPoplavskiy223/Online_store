@@ -15,3 +15,12 @@ def test_category_product(category_product_property):
         "Iphone 15, 210000.0 руб. Остаток: 8 шт.\n"
         "Xiaomi Redmi Note 11, 31000.0 руб. Остаток: 14 шт.\n"
     )
+
+
+def test_add_valid_product(category_return_1, product_return_1):
+
+    category_return_1._Category__products = []
+    category_return_1.add_product(product_return_1)
+
+    assert len(category_return_1._Category__products) == 1
+    assert category_return_1._Category__products[0].name == "Samsung Galaxy S23 Ultra"

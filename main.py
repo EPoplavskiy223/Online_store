@@ -27,7 +27,6 @@ if __name__ == "__main__":
             "quantity": 5,
         }
     )
-    print('*' * 10, type(new_product))
     print(new_product.name)
     print(new_product.description)
     print(new_product.price)
