@@ -45,3 +45,53 @@ def category_product_property():
         [product1, product2, product3],
     )
     return category1
+
+
+@pytest.fixture
+def product_str():
+    product1 = Product("Samsung", "256GB", 180000.0, 5)
+    product2 = Product("Iphone", "512GB", 210000.0, 8)
+    product3 = Product("Xiaomi", "1024GB", 31000.0, 14)
+
+    return product1, product2, product3
+
+
+@pytest.fixture
+def product__add__():
+    product1 = Product("TEST1", "256GB", 180000.0, 5)
+    product2 = Product("TEST2", "512GB", 210000.0, 8)
+    product3 = Product("TEST3", "1024GB", 31000.0, 14)
+    return product1 + product2, product1 + product3, product2 + product3
+
+
+@pytest.fixture
+def category_all_quantity():
+
+    product1 = Product("test1", "qq", 180000.0, 5)
+    product2 = Product("test2", "qq", 210000.0, 8)
+    product3 = Product("test3", "qqq", 31000.0, 14)
+    category1 = Category("TEST", "TEST!", [product1, product2, product3])
+    return str(category1)
+
+
+@pytest.fixture
+def category_all_quantity_error():
+    product1 = Product("test1", "qq", 180000.0, 5)
+    product2 = Product("test2", "qq", 210000.0, -2)
+    product3 = Product("test3", "qqq", 31000.0, 14)
+    category1 = Category("TEST", "TEST!", [product1, product2, product3])
+    return str(category1)
+
+
+@pytest.fixture
+def category__str__():
+    product1 = Product('55" QLED 4K', "Фоновая подсветка", 123000.0, 7)
+    product2 = Product("TEST3", "1024GB", 31000.0, 14)
+
+    category1 = Category(
+        "Телевизоры",
+        "Современный телевизор, который позволяет наслаждаться просмотром, "
+        "станет вашим другом и помощником",
+        [product1, product2],
+    )
+    return str(category1)
