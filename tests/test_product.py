@@ -23,3 +23,16 @@ def test_price(capsys, new_product_classmethod):
     new_price.price = -120
     mess = capsys.readouterr()
     assert mess.out.strip() == "Цена не должна быть нулевая или отрицательная"
+
+
+def test_str(product_str):
+
+    assert str(product_str[0]) == "Samsung, 180000.0 руб. Остаток: 5 шт."
+    assert str(product_str[1]) == "Iphone, 210000.0 руб. Остаток: 8 шт."
+    assert str(product_str[2]) == "Xiaomi, 31000.0 руб. Остаток: 14 шт."
+
+
+def test__add__(product__add__):
+    assert product__add__[0] == 2580000.0
+    assert product__add__[1] == 1334000.0
+    assert product__add__[2] == 2114000.0

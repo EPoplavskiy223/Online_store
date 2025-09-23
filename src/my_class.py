@@ -30,6 +30,12 @@ class Product:
         else:
             print("Цена не должна быть нулевая или отрицательная")
 
+    def __str__(self):
+        return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
+
+    def __add__(self, other):
+        return self.__price * self.quantity + other.__price * other.quantity
+
 
 class Category:
     """
@@ -50,7 +56,7 @@ class Category:
         self.__products = products
 
         Category.category_count += 1
-        Category.product_count += len(products)
+        Category.product_count += len(self.__products)
 
     @property
     def products(self):
@@ -66,3 +72,17 @@ class Category:
             raise TypeError("Можно добавлять только объекты класса Product")
         self.__products.append(product)
         Category.product_count += 1
+
+    @property
+    def all_quantity(self):
+        """Подсчет общего количества товаров"""
+        result = 0
+        for prod in self.__products:
+            if prod.quantity > 0:
+                result += prod.quantity
+            else:
+                print(f"Отрицательное число товаров в {prod.name}")
+        return result
+
+    def __str__(self):
+        return f"{self.name}, количество продуктов: {self.all_quantity} шт."

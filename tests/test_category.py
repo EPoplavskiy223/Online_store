@@ -24,3 +24,19 @@ def test_add_valid_product(category_return_1, product_return_1):
 
     assert len(category_return_1._Category__products) == 1
     assert category_return_1._Category__products[0].name == "Samsung Galaxy S23 Ultra"
+
+
+def test_all_quantity(category_all_quantity):
+
+    assert category_all_quantity == "TEST, количество продуктов: 27 шт."
+
+
+def test_all_quantity_error(capsys, category_all_quantity_error):
+    mess = capsys.readouterr()
+
+    assert mess.out.strip() == "Отрицательное число товаров в test2"
+    assert category_all_quantity_error == "TEST, количество продуктов: 19 шт."
+
+
+def test_category__str__(category__str__):
+    assert category__str__ == "Телевизоры, количество продуктов: 21 шт."
