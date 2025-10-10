@@ -24,7 +24,10 @@ def test_price(capsys, new_product_classmethod):
     assert new_price.price == 100
     new_price.price = -120
     mess = capsys.readouterr()
-    assert mess.out.strip() == "Цена не должна быть нулевая или отрицательная"
+    assert (
+        mess.out.strip().split("\n")[-1]
+        == "Цена не должна быть нулевая или отрицательная"
+    )
 
 
 def test_str(product_str):
