@@ -1,4 +1,8 @@
-class Product:
+from src.Base_Product import BaseProduct
+from src.print_mixin import PrintMixin
+
+
+class Product(BaseProduct, PrintMixin):
     """
     Атрибуты класса заполняются автоматически при инициализации нового объекта.
     """
@@ -9,11 +13,11 @@ class Product:
     quantity: int
 
     def __init__(self, name: str, description: str, price: float, quantity: int):
-
         self.name = name
         self.description = description
         self.__price = price
         self.quantity = quantity
+        super().__init__()
 
     @classmethod
     def new_product(cls, product: dict):

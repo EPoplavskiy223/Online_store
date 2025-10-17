@@ -34,7 +34,7 @@ def test_all_quantity(category_all_quantity):
 def test_all_quantity_error(capsys, category_all_quantity_error):
     mess = capsys.readouterr()
 
-    assert mess.out.strip() == "Отрицательное число товаров в test2"
+    assert mess.out.strip().split("\n")[-1] == "Отрицательное число товаров в test2"
     assert category_all_quantity_error == "TEST, количество продуктов: 19 шт."
 
 
