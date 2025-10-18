@@ -87,3 +87,10 @@ def test_sum_error_phone_and_num(sum_test_phone):
 def test_sum_error_grass_and_num(sum_test_grass):
     with pytest.raises(TypeError):
         res1 = sum_test_grass[0] + 1
+
+
+def test_value_error_product():
+    with pytest.raises(ValueError) as e:
+        res1 = Product("Samsung", "256GB", 180000.0, 0)
+
+    assert str(e.value) == "Товар с нулевым количеством не может быть добавлен"

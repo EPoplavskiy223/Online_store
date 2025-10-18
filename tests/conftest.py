@@ -163,3 +163,12 @@ def sum_test_grass():
         "Темно-зеленый",
     )
     return grass1, grass2
+
+
+@pytest.fixture
+def no_category_product():
+    return Category(
+        name="Смартфоны",
+        description="Смартфоны, как средство не только коммуникации, но и получения дополнительных функций для удобства жизни",
+        products=[],
+    )
