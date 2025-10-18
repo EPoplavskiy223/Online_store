@@ -40,3 +40,11 @@ def test_all_quantity_error(capsys, category_all_quantity_error):
 
 def test_category__str__(category__str__):
     assert category__str__ == "Телевизоры, количество продуктов: 21 шт."
+
+
+def test_middle_price(category_product_property):
+    assert category_product_property.middle_price() == 140333.33
+
+
+def test_no_quantity_middle(no_category_product):
+    assert no_category_product.middle_price() == 0

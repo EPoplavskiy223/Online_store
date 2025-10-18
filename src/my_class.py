@@ -17,6 +17,10 @@ class Product(BaseProduct, PrintMixin):
         self.description = description
         self.__price = price
         self.quantity = quantity
+        if quantity == 0:
+            raise ValueError("Товар с нулевым количеством не может быть добавлен")
+        else:
+            self.quantity = quantity
         super().__init__()
 
     @classmethod
@@ -92,6 +96,16 @@ class Category:
 
     def __str__(self):
         return f"{self.name}, количество продуктов: {self.all_quantity} шт."
+
+    def middle_price(self):
+        try:
+            return round(
+                sum([products.price for products in self.__products])
+                / len(self.__products),
+                2,
+            )
+        except ZeroDivisionError:
+            return 0
 
 
 class Smartphone(Product):
